@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log Viewer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <select id="files"></select>
+  <button onclick="openFile()">Open</button>
+  <input type="text" id="search" placeholder="Search..." oninput="searchText()" />
+</div>
+
+<div id="terminal"></div>
+<script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+<script src="/static/app.js"></script>
+
+</body>
+</html>
