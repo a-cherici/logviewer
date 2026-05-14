@@ -11,3 +11,9 @@
 
 ```bash
 pip install -r requirements.txt
+```
+## Run
+
+```bash
+uvicorn app.main:app --reload --port 8001
+```

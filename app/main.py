@@ -29,7 +29,6 @@ def list_files():
 
 @app.get("/preview", response_class=PlainTextResponse)
 def preview_file(name: str):
-    #print("newwwwwww")
     path = safe_join(BASE_DIR, name)
     return tail_lines(path)#, MAX_LINES)
 

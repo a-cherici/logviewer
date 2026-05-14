@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logviewer
+  namespace: test-kopf
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      application: logviewer
+  template:
+    metadata:
+      labels:
+        application: logviewer
+    spec:
+      containers:
+      - name: the-only-one
+        image: alm-repos.sogei.it/automation/logviewer:0.0.1
+        ports:
+          - containerPort: 8001
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: logs
+            mountPath: /opt/app-root/src/logs
+      volumes:
+        - name: logs
+          persistentVolumeClaim:
+            claimName: shared-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: test-kopf
+  name: logviewer-service
+spec:
+  ports:
+    - port: 8001
+      targetPort: 8001
+      protocol: TCP
+  selector:
+    application: logviewer
