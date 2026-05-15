@@ -1,0 +1,21 @@
+[req]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = dn
+x509_extensions = v3_req
+
+[dn]
+C = IT
+ST = Lazio
+L = Roma
+O = Sogei_aws_prova
+CN = logviewer.int-indaws-labcon.eu-central-1.sogeiaws.it
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = logviewer.int-indaws-labcon.eu-central-1.sogeiaws.it
+DNS.2 = logviewer.auto.int-indaws-labcon.eu-central-1.sogeiaws.it
+IP.1 = 192.168.1.10
